@@ -118,7 +118,7 @@ public class IOSkeleton
         string prompt = ("Ask me about which problem: ");
         int choice;
 
-        IOSkeleton gen = new GenericIOSkeleton("ProjectEuler", options, prompt);
+        IOSkeleton gen = new IOSkeleton("ProjectEuler", options, prompt);
         gen.Start();
 
         bool programLoop = true;
