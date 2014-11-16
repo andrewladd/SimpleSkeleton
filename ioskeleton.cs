@@ -1,12 +1,17 @@
+// Takes problem characteristics and produces a simple console
+// I/O framework with it.
+
+// A member of the FirstLibrary.DLL file and HelperFiles namespace.
+
+// csc /target:library /out:FirstLibrary.DLL IOSkeleton.cs
+
 using System;
 using System.IO;
 
-
-// Make a class that takes problem characteristics and produces a simple console
-// I/O program with it. 
-
-public class IOSkeleton
+namespace HelperFiles
 {
+  public class IOSkeleton
+  {
     //Fields
     public string progName;
     public string[] options;
@@ -78,20 +83,24 @@ public class IOSkeleton
 
     public void ExitSequence(out bool dontExit)
     {
-        Console.Clear();
-        Console.WriteLine("Are you sure you want to exit?\n\n");
-        Console.Write("(Y|N): ");
-        string opt = Console.ReadLine();
         bool optRight = true;
-        dontExit = true;
 
         do
         {
+            Console.Clear();
+            Console.WriteLine("Are you sure you want to exit?\n\n");
+            Console.Write("(Y|N): ");
+            
+            optRight = true;
+            string opt = Console.ReadLine();
+            dontExit = true;
+
             switch (opt)
             {
                 case "Y":
                 case "y":
                     dontExit = false;
+                    Console.Clear();
                     break;
 
 
@@ -111,7 +120,6 @@ public class IOSkeleton
 
 
 
-    //TEST
     static void Main( )
     {
         string[] options = {"Problem 1", "Problem 2", "Problem 3"};
@@ -142,12 +150,12 @@ public class IOSkeleton
                 gen.ExitSequence(out programLoop);
                 break;
             default:
-                gen.Start();
                 break;
             }
         } while(programLoop);
 
 
 
-    }
+        }
+    }   
 }
